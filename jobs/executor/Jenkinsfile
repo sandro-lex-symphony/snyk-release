@@ -17,7 +17,8 @@ properties([
 
 node {
     stage("SNYK SCAN ${params.git_repo}") {
-        echo """########## PARAMS ############ \n \
+        echo """ \
+        ########## PARAMS ############ \n \
         # snyk_org: ${params.snyk_org} \n \
         # git_repo: ${params.git_repo} \n \
         # git_hash: ${params.git_hash} \n \
