@@ -6,7 +6,7 @@ node {
         projects['client'] = {
             build job: 'test2', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
-                string(name: 'prj_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: 'test')
@@ -17,7 +17,7 @@ node {
         projects['login'] = {
             build job: 'test2', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
-                string(name: 'prj_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: 'test')
@@ -28,7 +28,7 @@ node {
         projects['sbe'] = {
             build job: 'test2', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
-                string(name: 'prj_repo', value: "github.com/SymphonyOSF/SBE.git"),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SBE.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: "java"),
                 string(name: 'java_version', value: '8'),
@@ -40,7 +40,7 @@ node {
         projects['agent'] = {
             build job: 'test2', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
-                string(name: 'prj_repo', value: "github.com/SymphonyOSF/symphony-agent.git"),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-agent.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: "java"),
                 string(name: 'java_version', value: '8')
