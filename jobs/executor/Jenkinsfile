@@ -17,12 +17,12 @@ properties([
 
 node {
     stage("SNYK SCAN ${params.git_repo}") {
-        echo """########## PARAMS ############ \
-        # snyk_org: ${params.snyk_org} \
-        # git_repo: ${params.git_repo} \
-        # git_hash: ${params.git_hash} \
-        # snyk_scan: ${params.snyk_scan} \
-        # prj_type: ${params.prj_type} \
+        echo """########## PARAMS ############ \n \
+        # snyk_org: ${params.snyk_org} \n \
+        # git_repo: ${params.git_repo} \n \
+        # git_hash: ${params.git_hash} \n \
+        # snyk_scan: ${params.snyk_scan} \n \
+        # prj_type: ${params.prj_type} \n \
         #####################################"""
 
         def snyk_image = 'slex-reg-test/snyk-release:experimental'
@@ -50,7 +50,7 @@ node {
 
         sh ("""#!/bin/sh -e\n docker run --rm \
                 ${secrets} \
-                -e SNYK_ORG='${param.snyk_org}' \
+                -e SNYK_ORG='${params.snyk_org}' \
                 -e GIT_REPO='${params.git_repo}' \
                 -e GIT_HASH='${params.git_hash}' \
                 -e SNYK_SCAN='${param.snyk_scan}' \
