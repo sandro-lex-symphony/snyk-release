@@ -9,7 +9,18 @@ node {
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'snyk_scan', value: 'test')
+                string(name: 'snyk_scan', value: 'monitor')
+            ],
+            wait: true
+        }
+
+        projects['admin'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Admin-Compliance.git"),
+                string(name: 'git_hash', value: "20.12"),
+                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'snyk_scan', value: 'monitor')
             ],
             wait: true
         }
@@ -20,7 +31,7 @@ node {
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'snyk_scan', value: 'test')
+                string(name: 'snyk_scan', value: 'monitor')
             ],
             wait: true
         }
@@ -32,7 +43,8 @@ node {
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: "java"),
                 string(name: 'java_version', value: '8'),
-                string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true -PSymphony,SharedResources")
+                string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true -PSymphony,SharedResources"),
+                string(name: 'snyk_scan', value: 'monitor')
             ],
             wait: true
         }
@@ -43,7 +55,8 @@ node {
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-agent.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: "java"),
-                string(name: 'java_version', value: '8')
+                string(name: 'java_version', value: '8'),
+                string(name: 'snyk_scan', value: 'monitor')
             ],
             wait: true
         }

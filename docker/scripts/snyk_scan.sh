@@ -6,6 +6,8 @@ echo "snyk auth ..."
 snyk auth $(cat ${HOME}/snyk-token.txt)                                                                                                                                                                                                                                                                              
 rm ${HOME}/snyk-token.txt 
 
+cd $(basename $GIT_REPO .git)
+
 PARAMS=''
 if [ "$JAVA_PARAMS" != "filler" ]
 then
