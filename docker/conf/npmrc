@@ -1,0 +1,5 @@
+registry=https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/
+_auth=xxx
+always-auth=true
+email=warcicd@symphony.com
+progress=false
