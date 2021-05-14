@@ -26,7 +26,7 @@ node {
         # prj_type: ${params.prj_type} \n \
         #####################################"""
 
-        def snyk_image = 'slex-reg-test/snyk-release:experimental'
+        def snyk_image = "slex-reg-test/snyk-release:${params.snyk_org}"
         def artifactory_url = 'artifact.symphony.com'
 
         artfactory = new Artifactory(this)
