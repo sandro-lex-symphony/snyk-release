@@ -1,0 +1,64 @@
+@Library('SnykShared@master')                                                                                                           
+import com.symphony.security.containers.Artifactory
+
+properties([    
+   parameters([    
+     stringParam(name: 'snyk_org', defaultValue: '', description: "Snyk Org Id (not name), should have a token valid"),
+     stringParam(name: 'git_repo', defaultValue: '', description: "Git repo without protocol"),
+     stringParam(name: 'git_hash', defaultValue: '', description: "branch | hash"),
+     stringParam(name: 'snyk_scan', defaultValue: 'test', description: "test | monitor"),
+     stringParam(name: 'prj_type', defaultValue: 'nodejs', description: "nodejs | java"),
+     stringParam(name: 'node_version', defaultValue: '10.21.0', description: "nodejs version"),
+     stringParam(name: 'java_version', defaultValue: '8', description: "8 | 11"),
+     stringParam(name: 'java_params', defaultValue: '', description: "Additional parameters for maven build")
+   ])    
+ ])    
+
+
+node {
+    stage("SNYK SCAN ${params.git_repo}") {
+        echo """########## PARAMS ############ \
+        # snyk_org: ${params.snyk_org} \
+        # git_repo: ${params.git_repo} \
+        # git_hash: ${params.git_hash} \
+        # snyk_scan: ${params.snyk_scan} \
+        # prj_type: ${params.prj_type} \
+        #####################################"""
+
+        def snyk_image = 'slex-reg-test/snyk-release:experimental'
+        def artifactory_url = 'artifact.symphony.com'
+
+        artfactory = new Artifactory(this)
+        artfactory.pull(snyk_image)
+
+        def secrets = ''
+        
+        withCredentials([usernamePassword(credentialsId: 'b727f90a-0844-41d8-933b-a9801398bddc', usernameVariable: 'git_username', passwordVariable: 'git_password')]) {
+            secrets = " -e GIT_USER='${params.git_username}' -e GIT_PASS='${params.git_password}' "
+        }
+        
+        withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'snyk_token')]) { 
+            secrets += " -e SECRET='${snyk_token}' "
+        }
+        def npmpass = sh (script: "#!/bin/sh -e\n cat /data/nvm/npmrc/npmrc-default | grep _auth | sed 's/_auth=//g'", returnStdout: true).trim()
+        secrets += " -e NPM_PASS='${npmpass}' "
+
+        // def mvnpass = sh (script: '#!/bin/sh -e\n grep -oPm1 "(?<=<password>)[^<]+" <<< "$(cat /data/maven/settings.xml)"', returnStdout: true).trim()
+        def mvnpass = sh (script: "#!/bin/sh -e\n awk -F'[<>]' '/<password>/{print \$3}' /data/maven/settings.xml | head -1", returnStdout: true).trim()
+        secrets += " -e MVN_PASS='${mvnpass}' "
+    
+
+        sh ("""#!/bin/sh -e\n docker run --rm \
+                ${secrets} \
+                -e SNYK_ORG='${param.snyk_org}' \
+                -e GIT_REPO='${params.git_repo}' \
+                -e GIT_HASH='${params.git_hash}' \
+                -e SNYK_SCAN='${param.snyk_scan}' \
+                -e JAVA_VERSION='${params.java_version}' \
+                -e JAVA_PARAMS='${params.java_params}' \
+                -e NODE_VERSION='${params.node_version}' \
+                ${artifactory_url}/${snyk_image} """)
+    }
+}
+
+

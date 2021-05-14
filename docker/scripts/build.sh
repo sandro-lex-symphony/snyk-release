@@ -3,6 +3,7 @@
 set -e 
 
 build_node() {
+    set -e 
     INSTALLED_NODE_VERSION=$(node --version)
     echo "Installed nodejs version: ${INSTALLED_NODE_VERSION}"
 
@@ -25,6 +26,7 @@ build_node() {
 }
 
 build_java() {
+    set -e 
     if [ "$JAVA_VERSION" = "8" ]
     then
         update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
@@ -33,12 +35,13 @@ build_java() {
         update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
     fi
     
-    INSTALLED_JAVA_VERSION=$(java -version)
-    echo "Using Java Version ${INSTALLED_JAVA_VERSION}"
+    echo "Using Java Version"
+    java -version
 
     # replace artifactory password in mvn settings file
-    sed -i "s/xxx/${MVN_PASS}/g" /home/myuser/.m2/settings.xml
+    sed -i "s/xxx/${MVN_PASS}/g" ${HOME}/.m2/settings.xml
 
+    cd $(basename $GIT_REPO .git)
     echo "Building maven prj ..."
     if [ "$JAVA_PARAMS" = "filler" ]
     then
