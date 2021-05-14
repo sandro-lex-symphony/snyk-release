@@ -54,7 +54,7 @@ node {
                 -e SNYK_ORG='${params.snyk_org}' \
                 -e GIT_REPO='${params.git_repo}' \
                 -e GIT_HASH='${params.git_hash}' \
-                -e SNYK_SCAN='${param.snyk_scan}' \
+                -e SNYK_SCAN='${params.snyk_scan}' \
                 -e JAVA_VERSION='${params.java_version}' \
                 -e JAVA_PARAMS='${params.java_params}' \
                 -e NODE_VERSION='${params.node_version}' \
