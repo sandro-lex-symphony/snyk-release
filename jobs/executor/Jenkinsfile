@@ -18,7 +18,7 @@ properties([
 node {
     stage("SNYK SCAN ${params.git_repo}") {
         echo """ \
-        ########## PARAMS ############ \n \
+        ########## PARAMS ################### \n \
         # snyk_org: ${params.snyk_org} \n \
         # git_repo: ${params.git_repo} \n \
         # git_hash: ${params.git_hash} \n \
@@ -47,7 +47,7 @@ node {
         // def mvnpass = sh (script: '#!/bin/sh -e\n grep -oPm1 "(?<=<password>)[^<]+" <<< "$(cat /data/maven/settings.xml)"', returnStdout: true).trim()
         def mvnpass = sh (script: "#!/bin/sh -e\n awk -F'[<>]' '/<password>/{print \$3}' /data/maven/settings.xml | head -1", returnStdout: true).trim()
         secrets += " -e MVN_PASS='${mvnpass}' "
-    
+        echo "DEBUG: snyk_token: ${snyk_token}"
 
         sh ("""#!/bin/sh -e\n docker run --rm \
                 ${secrets} \
