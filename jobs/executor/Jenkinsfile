@@ -41,6 +41,11 @@ node {
         withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'snyk_token')]) { 
             secrets += " -e SECRET='${snyk_token}' "
         }
+
+        withCredentials([usernamePassword(credentialsId: 'artifactory_registry_svc_user', usernameVariable: 'u1', passwordVariable: 'p1')]) { 
+            secrets += " arti: ${u1}   ${u2} "
+        }
+
         def npmpass = sh (script: "#!/bin/sh -e\n cat /data/nvm/npmrc/npmrc-default | grep _auth | sed 's/_auth=//g'", returnStdout: true).trim()
         secrets += " -e NPM_PASS='${npmpass}' "
 
