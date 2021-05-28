@@ -47,7 +47,7 @@ node {
         // def mvnpass = sh (script: '#!/bin/sh -e\n grep -oPm1 "(?<=<password>)[^<]+" <<< "$(cat /data/maven/settings.xml)"', returnStdout: true).trim()
         def mvnpass = sh (script: "#!/bin/sh -e\n awk -F'[<>]' '/<password>/{print \$3}' /data/maven/settings.xml | head -1", returnStdout: true).trim()
         secrets += " -e MVN_PASS='${mvnpass}' "
-        echo "DEBUG: snyk_token: ${snyk_token}"
+        echo "DEBUG: snyk_token: ${secrets}"
 
         sh ("""#!/bin/sh -e\n docker run --rm \
                 ${secrets} \
