@@ -2,6 +2,7 @@ node {
     stage('Release scan orchestrator') {
         def projects = [:]
         def snyk_org = "1533ded9-dcfa-4e40-ba01-3e05f03b60e0"
+        def snyk_scan = "monitor"
 
         projects['client'] = {
             build job: 'executor', parameters: [
@@ -9,7 +10,7 @@ node {
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'snyk_scan', value: 'monitor')
+                string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
         }
@@ -20,7 +21,7 @@ node {
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Admin-Compliance.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'snyk_scan', value: 'monitor')
+                string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
         }
@@ -31,7 +32,7 @@ node {
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'snyk_scan', value: 'monitor')
+                string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
         }
@@ -44,7 +45,7 @@ node {
                 string(name: 'prj_type', value: "java"),
                 string(name: 'java_version', value: '8'),
                 string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true -PSymphony,SharedResources"),
-                string(name: 'snyk_scan', value: 'monitor')
+                string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
         }
@@ -56,7 +57,7 @@ node {
                 string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: "java"),
                 string(name: 'java_version', value: '8'),
-                string(name: 'snyk_scan', value: 'monitor')
+                string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
         }
