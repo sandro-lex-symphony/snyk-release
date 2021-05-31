@@ -59,6 +59,7 @@ node {
                 -e JAVA_PARAMS='${params.java_params}' \
                 -e NODE_VERSION='${params.node_version}' \
                 -e PRJ_TYPE='${params.prj_type}' \
+                -e BUILD_NUMBER='${BUILD_NUMBER}' \
                 ${artifactory_url}/${snyk_image} """)
     }
 }
