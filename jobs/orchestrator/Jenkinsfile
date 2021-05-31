@@ -132,7 +132,6 @@ node {
             wait: true
         }
 
-        fastFail false
         parallel projects
     }
 }
