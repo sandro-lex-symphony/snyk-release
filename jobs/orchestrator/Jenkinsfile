@@ -1,7 +1,4 @@
 node {
-    triggers {
-        cron('1 15 * * *')
-    }
     stage('Release scan orchestrator') {
         def projects = [:]
         def snyk_org = "1533ded9-dcfa-4e40-ba01-3e05f03b60e0"
