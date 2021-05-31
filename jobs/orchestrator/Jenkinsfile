@@ -15,18 +15,18 @@ node {
             wait: true
         }
 
-        projects['SBE'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SBE.git"),
-                string(name: 'git_hash', value: "20.12"),
-                string(name: 'prj_type', value: "java"),
-                string(name: 'java_version', value: '8'),
-                string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true -PSymphony,SharedResources"),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+        // projects['SBE'] = {
+        //     build job: 'executor', parameters: [
+        //         string(name: 'snyk_org', value: snyk_org),
+        //         string(name: 'git_repo', value: "github.com/SymphonyOSF/SBE.git"),
+        //         string(name: 'git_hash', value: "20.12"),
+        //         string(name: 'prj_type', value: "java"),
+        //         string(name: 'java_version', value: '8'),
+        //         string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true -PSymphony,SharedResources"),
+        //         string(name: 'snyk_scan', value: snyk_scan)
+        //     ],
+        //     wait: true
+        // }
 
         projects['rtc-conference-service'] = {
             build job: 'executor', parameters: [
