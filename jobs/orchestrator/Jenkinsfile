@@ -36,6 +36,7 @@ node {
                 string(name: 'prj_type', value: "java"),
                 string(name: 'java_version', value: '11'),
                 string(name: 'java_params', value: "-Dskip.tests=true -Dskip.integration.tests=true"),
+                string(name: 'snyk_exclude', value: "tools"),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
