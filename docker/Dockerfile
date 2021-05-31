@@ -13,6 +13,7 @@ ENV JAVA_VERSION 8
 ENV JAVA_PARAMS filler
 ENV SNYK_SCAN test
 ENV SECRET filler
+ENV BUILD_NUMBER filler
 
 RUN apt-get update -y && \
 	apt-get install -y openjdk-8-jdk:amd64 maven git vim wget unzip python3 python3-pip python \

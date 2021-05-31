@@ -58,6 +58,7 @@ build_java() {
     mvn clean install -U -B -ntp $PARAMS
 }
 
+echo "XXXXXX ${BUILD_NUMBER} XXXXX"
 if [ "$PRJ_TYPE" = "nodejs" ]
 then
     echo "Going to nodejs project ..."
