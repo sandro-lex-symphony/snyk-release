@@ -13,6 +13,7 @@ ENV JAVA_VERSION 8
 ENV JAVA_PARAMS filler
 ENV SNYK_SCAN test
 ENV SECRET filler
+ENV SNYK_EXCLUDE filler
 ENV BUILD_NUMBER filler
 
 RUN apt-get update -y && \
