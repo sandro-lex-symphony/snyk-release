@@ -36,16 +36,16 @@ Encrypt the secret
 # Parameter list
 | VAR          | DESCRIPTION                                         | 
 |--------------|-----------------------------------------------------|
-| GIT_USER.    | Github username                                     |
-| GIT_PASS.    | Github password                                     | 
-| GIT_REPO.    | Github repo                                         |
-| GIT_HASH.    | Git tab / hash                                      |
-| SECRET.      | Master secret                                       |
-| MVN_PASS.    | Artifactory maven password for user dev-services.   |
-| NPM_PASS.    | Artifactory npm password                            |
-| SNYK_ORG.    | Snyk org-id                                         |
-| SNYK_SCAN.   | Snyk Scan mode [test|monitor]                       |
-| PRJ_TYPE.    | Project Type [java|nodejs]                          |
+| GIT_USER     | Github username                                     |
+| GIT_PASS     | Github password                                     | 
+| GIT_REPO     | Github repo                                         |
+| GIT_HASH     | Git tab / hash                                      |
+| SECRET       | Master secret                                       |
+| MVN_PASS     | Artifactory maven password for user dev-services.   |
+| NPM_PASS     | Artifactory npm password                            |
+| SNYK_ORG     | Snyk org-id                                         |
+| SNYK_SCAN    | Snyk Scan mode [test|monitor]                       |
+| PRJ_TYPE     | Project Type [java|nodejs]                          |
 | JAVA_VERSION | Java version [8|11]                                 |
 | JAVA_PARAMS  | Java additional parameters for mvn build            |
 | NODE_VERSION | Nodejs version                                      |
