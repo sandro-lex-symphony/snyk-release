@@ -41,6 +41,10 @@ build_java() {
     # replace artifactory password in mvn settings file
     sed -i "s/xxx/${MVN_PASS}/g" ${HOME}/.m2/settings.xml
 
+    # specific usage for rtc-media-bridge
+    export ARTIFACTORY_USERNAME=dev-services
+    export ARTIFACTORY_PASSWORD=${MVN_PASS}
+
     cd $(basename $GIT_REPO .git)
     echo "Building maven prj ..."
     if [ "$JAVA_PARAMS" = "filler" ]
