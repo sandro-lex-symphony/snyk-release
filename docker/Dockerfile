@@ -16,7 +16,7 @@ ENV SECRET filler
 ENV BUILD_NUMBER filler
 
 RUN apt-get update -y && \
-	apt-get install -y openjdk-8-jdk:amd64 maven git vim wget unzip python3 python3-pip python \
+	apt-get install -y openjdk-8-jdk:amd64 maven git vim wget curl unzip python3 python3-pip python \
 	&& rm -rf /var/lib/apt/lists/*
 
 # ubuntu defaults java11, have to force it to java8
