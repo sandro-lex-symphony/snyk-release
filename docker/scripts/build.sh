@@ -54,6 +54,7 @@ build_java() {
         PARAMS=$JAVA_PARAMS
     fi
 
+    echo "[COMMAND]: mvn clean install -U -B -ntp $PARAMS"
     mvn clean install -U -B -ntp $PARAMS
 }
 
