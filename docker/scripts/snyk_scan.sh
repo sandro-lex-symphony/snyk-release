@@ -18,7 +18,7 @@ fi
 EXCLUDE=''
 if [ "$SNYK_EXCLUDE" != "filler" ]
 then
-    EXCLUDE=" --exclude ${SNYK_EXCLUDE} "
+    EXCLUDE=" --exclude=${SNYK_EXCLUDE} "
 fi
                                                                                                                                                                                                                                                                                           
 if [ "$SNYK_SCAN" = "monitor" ]                                                                                                                                                                                                                                                           

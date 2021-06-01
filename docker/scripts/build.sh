@@ -35,7 +35,7 @@ build_java() {
         update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
     fi
     
-    echo "Using Java Version"
+    echo "Using Java Version:"
     java -version
 
     # replace artifactory password in mvn settings file
@@ -61,7 +61,7 @@ build_java() {
 echo "XXXXXX ${BUILD_NUMBER} XXXXX"
 if [ "$PRJ_TYPE" = "nodejs" ]
 then
-    echo "Going to nodejs project ..."
+    echo "Going to build nodejs project ..."
     build_node
 else
     echo "Going to build java projects ..."
