@@ -61,7 +61,7 @@ node {
                 -e NODE_VERSION='${params.node_version}' \
                 -e PRJ_TYPE='${params.prj_type}' \
                 -e BUILD_NUMBER='${BUILD_NUMBER}' \
-                -e SNYK_EXCLUDE='${SNYK_EXCLUDE}' \
+                -e SNYK_EXCLUDE='${params.snyk_exclude}' \
                 ${artifactory_url}/${snyk_image} """)
     }
 }
