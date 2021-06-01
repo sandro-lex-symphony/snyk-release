@@ -33,22 +33,23 @@ Encrypt the secret
       snyk-release
 
 
-# Parameter list
-| VAR          | DESCRIPTION                                         | 
-|--------------|-----------------------------------------------------|
-| GIT_USER     | Github username                                     |
-| GIT_PASS     | Github password                                     | 
-| GIT_REPO     | Github repo                                         |
-| GIT_HASH     | Git tab / hash                                      |
-| SECRET       | Master secret                                       |
-| MVN_PASS     | Artifactory maven password for user dev-services.   |
-| NPM_PASS     | Artifactory npm password                            |
-| SNYK_ORG     | Snyk org-id                                         |
-| SNYK_SCAN    | Snyk Scan mode [test|monitor]                       |
-| PRJ_TYPE     | Project Type [java|nodejs]                          |
-| JAVA_VERSION | Java version [8|11]                                 |
-| JAVA_PARAMS  | Java additional parameters for mvn build            |
-| NODE_VERSION | Nodejs version                                      |
+# Parametera list
+| VAR          | DESCRIPTION                                         | MANDATORY | Type | Example |
+|--------------|-----------------------------------------------------|-----------|------| --------|
+| GIT_USER     | Github username                                     | Yes       | String | user   |
+| GIT_PASS     | Github password                                     | Yes       | String | password123 | 
+| GIT_REPO     | Github repo                                         | Yes       | String | github.com/SymphonyOSF/SBE.git |
+| GIT_HASH     | Git tab / hash                                      | Yes       | String | 20.12 | 
+| SECRET       | Master secret                                       | Yes       | String | master123 | 
+| MVN_PASS     | Artifactory maven password for user dev-services.   | Only for java projects      | String | maven123 |
+| NPM_PASS     | Artifactory npm password                            | Only for node projects | String base64(username:passwd) | abcde== |
+| SNYK_ORG     | Snyk org-id                                         | Yes       | String | 123-123-123 |
+| SNYK_SCAN    | Snyk Scan mode [test / monitor]                       | Default test | String | monitor | 
+| PRJ_TYPE     | Project Type [java / nodejs]                          | Default nodejs | String | java |
+| JAVA_VERSION | Java version [8 / 11]                                 | Default 8 | String | 11 |
+| JAVA_PARAMS  | Java additional parameters for mvn build            | No | String | -DskipTests=true |
+| NODE_VERSION | Nodejs version                                      | Default 10.21.0 | String | 14.16.1 |
+| SNYK_EXCLUDE | Exclude directories from snyk scan                  | No | String | tests |
 
 
 # Example usage
