@@ -13,16 +13,16 @@ node {
     stage('Build Executor Container') {
         def image_name = 'snyk-release'
         def image_remote = 'slex-reg-test/snyk-release:' + params.snyk_org
+        def git_repo = 'https://github.com/sandro-lex-symphony/snyk-release'
+        def branch = 'master'
         echo 'going to build ...'
+        git(credentialsId: 'symphonyjenkinsauto', url: git_repo, branch: branch)
         sh 'pwd'
         sh 'ls -al'
 
         withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'master')]) { 
-            echo 'XXXX 1'
             sh "printf \"%s\" \"${master}\" > master.txt"
-            echo 'XXXX 2'
             sh "printf \"%s\" \"${params.snyk_token}\" > token.txt"
-            echo 'XXXX 2.2'
         }
         echo 'XXXX 3'
         sh "DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile --no-cache --secret id=master,src=master.txt --secret id=org_token_plain,src=token.txt  -t snyk-release docker/"
