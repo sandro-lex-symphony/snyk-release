@@ -17,9 +17,9 @@ node {
 
         withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'master')]) { 
             echo 'XXXX 1'
-            sh 'printf "%s" "${master}" > master.txt'
+            sh "printf \"%s\" \"${master}\" > master.txt"
             echo 'XXXX 2'
-            sh 'printf "%s" "${params.snyk_token}" > token.txt'
+            sh "printf \"%s\" \"${params.snyk_token}\" > token.txt"
             echo 'XXXX 2.2'
         }
         echo 'XXXX 3'
