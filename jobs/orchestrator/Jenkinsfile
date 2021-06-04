@@ -9,7 +9,8 @@
 // ])    
 //
 //
-//node {
+
+node {
 //    stage('Build Executor Container') {
 //        def image_name = 'snyk-release'
 //        def image_remote = 'slex-reg-test/snyk-release:' + params.snyk_org
