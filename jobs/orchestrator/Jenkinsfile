@@ -22,9 +22,9 @@ node {
             sh 'printf "%s" "${params.snyk_token}" > token.txt'
         }
         echo 'XXXX 3'
-        sh "DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile --no-cache --secret id=master,src=master.txt --secret id=org_token_plain,src=token.txt  -t ${image_name} docker/"
+        sh "DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile --no-cache --secret id=master,src=master.txt --secret id=org_token_plain,src=token.txt  -t snyk-release docker/"
         sh 'rm master.txt; rm token.txt'
-
+        
         echo 'going to tag & push ...'
         def art = new Artifactory(this)
         art.push(image_name, image_remote)
