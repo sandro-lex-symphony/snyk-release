@@ -16,9 +16,12 @@ node {
         echo 'going to build ...'
 
         withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'master')]) { 
+            echo 'XXXX 1'
             sh 'printf "%s" "${master}" > master.txt'
+            echo 'XXXX 2'
             sh 'printf "%s" "${params.snyk_token}" > token.txt'
         }
+        echo 'XXXX 3'
         sh "DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile --no-cache --secret id=master,src=master.txt --secret id=org_token_plain,src=token.txt  -t ${image_name} docker/"
         sh 'rm master.txt; rm token.txt'
 
