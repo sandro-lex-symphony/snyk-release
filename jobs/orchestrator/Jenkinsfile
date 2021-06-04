@@ -1,39 +1,36 @@
-@Library('SnykShared@master')
-import com.symphony.security.containers.Artifactory
+//@Library('SnykShared@master')
+//import com.symphony.security.containers.Artifactory
 
-properties([
-   parameters([
-     stringParam(name: 'snyk_org', defaultValue: '', description: "Snyk Org Id (not name), should have a token valid"),
-     stringParam(name: 'snyk_token', defaultValue: '', description: "Token")
-   ])    
- ])    
-
-
-node {
-    stage('Build Executor Container') {
-        def image_name = 'snyk-release'
-        def image_remote = 'slex-reg-test/snyk-release:' + params.snyk_org
-        def git_repo = 'https://github.com/sandro-lex-symphony/snyk-release'
-        def branch = 'master'
-        echo 'going to build ...'
-        git(credentialsId: 'symphonyjenkinsauto', url: git_repo, branch: branch)
-        sh 'pwd'
-        sh 'ls -al'
-
-        withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'master')]) { 
-            sh "printf \"%s\" \"${master}\" > master.txt"
-            sh "printf \"%s\" \"${params.snyk_token}\" > token.txt"
-        }
-        echo 'XXXX 3'
-        sh "DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile --no-cache --secret id=master,src=master.txt --secret id=org_token_plain,src=token.txt  -t snyk-release docker/"
-        sh 'rm master.txt; rm token.txt'
-        
-        echo 'going to tag & push ...'
-        def art = new Artifactory(this)
-        art.push(image_name, image_remote)
-        echo 'IMAGE DONE'
-    }
-
+//properties([
+//   parameters([
+//     stringParam(name: 'snyk_org', defaultValue: '', description: "Snyk Org Id (not name), should have a token valid"),
+//     stringParam(name: 'snyk_token', defaultValue: '', description: "Token")
+//   ])    
+// ])    
+//
+//
+//node {
+//    stage('Build Executor Container') {
+//        def image_name = 'snyk-release'
+//        def image_remote = 'slex-reg-test/snyk-release:' + params.snyk_org
+//        def git_repo = 'https://github.com/sandro-lex-symphony/snyk-release'
+//        def branch = 'master'
+//        echo 'going to build ...'
+//        git(credentialsId: 'symphonyjenkinsauto', url: git_repo, branch: branch)
+//
+//        withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'master')]) { 
+//            sh "printf \"%s\" \"${master}\" > master.txt"
+//            sh "printf \"%s\" \"${params.snyk_token}\" > token.txt"
+//        }
+//        sh "DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile --no-cache --secret id=master,src=master.txt --secret id=org_token_plain,src=token.txt  -t snyk-release docker/"
+//        sh 'rm master.txt; rm token.txt'
+//        
+//        echo 'going to tag & push ...'
+//        def art = new Artifactory(this)
+//        art.push(image_name, image_remote)
+//        echo 'IMAGE DONE'
+//    }
+//
     stage('Release scan orchestrator') {
         def projects = [:]
         def snyk_org = "1533ded9-dcfa-4e40-ba01-3e05f03b60e0"
