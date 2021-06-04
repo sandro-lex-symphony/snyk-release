@@ -14,6 +14,8 @@ node {
         def image_name = 'snyk-release'
         def image_remote = 'slex-reg-test/snyk-release:' + params.snyk_org
         echo 'going to build ...'
+        sh 'pwd'
+        sh 'ls -al'
 
         withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'master')]) { 
             echo 'XXXX 1'
