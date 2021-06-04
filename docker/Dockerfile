@@ -37,9 +37,12 @@ RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | 
 RUN mkdir -p /root/.m2
 COPY conf/settings.xml /root/.m2/settings.xml
 COPY conf/npmrc /root/.npmrc
-COPY conf/snyk-token /root/snyk-token
+#COPY conf/snyk-token /root/snyk-token
 WORKDIR /root
 RUN mkdir /root/data
 COPY scripts/*.sh /usr/local/bin/
+
+RUN --mount=type=secret,id=master --mount=type=secret,id=org_token_plain openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 100000 -salt \
+      -in $(cat /run/secrets/org_token_plain) -out /root/snyk-token -k $(cat /run/secrets/master) 
 
 ENTRYPOINT ["/usr/local/bin/run.sh"]
