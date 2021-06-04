@@ -20,6 +20,7 @@ node {
             sh 'printf "%s" "${master}" > master.txt'
             echo 'XXXX 2'
             sh 'printf "%s" "${params.snyk_token}" > token.txt'
+            echo 'XXXX 2.2'
         }
         echo 'XXXX 3'
         sh "DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile --no-cache --secret id=master,src=master.txt --secret id=org_token_plain,src=token.txt  -t snyk-release docker/"
