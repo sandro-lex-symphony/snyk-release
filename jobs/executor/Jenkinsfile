@@ -35,7 +35,7 @@ node {
 
         def secrets = ''
         
-        withCredentials([usernamePassword(credentialsId: 'b727f90a-0844-41d8-933b-a9801398bddc', usernameVariable: 'git_username', passwordVariable: 'git_password')]) {
+        withCredentials([usernamePassword(credentialsId: 'symphonyjenkinsauto', usernameVariable: 'git_username', passwordVariable: 'git_password')]) {
             secrets = " -e GIT_USER='${git_username}' -e GIT_PASS='${git_password}' "
         }
         
