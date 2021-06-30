@@ -53,6 +53,7 @@ node {
         secrets += " -e MVN_PASS='${mvnpass}' "
 
 
+        temp = temp.replace("\n", "")
         echo " ${temp} " 
 
         sh ("""#!/bin/sh -e\n docker run --rm \
