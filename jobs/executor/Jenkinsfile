@@ -52,7 +52,7 @@ node {
         def mvnpass = sh (script: "#!/bin/sh -e\n awk -F'[<>]' '/<password>/{print \$3}' /data/maven/settings.xml | head -1", returnStdout: true).trim()
         secrets += " -e MVN_PASS='${mvnpass}' "
 
-        echo "XXXX --> ${git_password}"
+        echo "XXXX --> ${temp}"
 
         sh ("""#!/bin/sh -e\n docker run --rm \
                 ${secrets} \
