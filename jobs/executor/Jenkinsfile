@@ -34,9 +34,11 @@ node {
         artfactory.pull(snyk_image)
 
         def secrets = ''
+        def temp = ''
         
         withCredentials([usernamePassword(credentialsId: 'symphonyjenkinsauto', usernameVariable: 'git_username', passwordVariable: 'git_password')]) {
             secrets = " -e GIT_USER='${git_username}' -e GIT_PASS='${git_password}' "
+            temp = $git_password
         }
         
         withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'snyk_token')]) { 
@@ -49,6 +51,8 @@ node {
         // def mvnpass = sh (script: '#!/bin/sh -e\n grep -oPm1 "(?<=<password>)[^<]+" <<< "$(cat /data/maven/settings.xml)"', returnStdout: true).trim()
         def mvnpass = sh (script: "#!/bin/sh -e\n awk -F'[<>]' '/<password>/{print \$3}' /data/maven/settings.xml | head -1", returnStdout: true).trim()
         secrets += " -e MVN_PASS='${mvnpass}' "
+
+        echo "XXXX --> ${git_password}"
 
         sh ("""#!/bin/sh -e\n docker run --rm \
                 ${secrets} \
