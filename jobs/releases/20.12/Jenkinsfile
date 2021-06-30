@@ -1,7 +1,7 @@
 node {
     stage('Release scan orchestrator') {
         def projects = [:]
-        def snyk_org = "1533ded9-dcfa-4e40-ba01-3e05f03b60e0"
+        def snyk_org = "62588e80-dec3-4533-a3bd-8a38ff2080ae"
         def snyk_scan = "monitor"
 
         projects['SFE-Client-App'] = {
