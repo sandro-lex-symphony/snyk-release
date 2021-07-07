@@ -93,6 +93,7 @@ node {
                 string(name: 'prj_type', value: "java"),
                 string(name: 'java_version', value: '8'),
                 string(name: 'java_params', value: '-DskipTests=true'),
+                string(name: 'snyk_exclude', value: 'harpo-integration-tests,harpo-replay-plugin,performance_test,re2,symproxy-re2-plugin,symproxy-replay-assistant,symproxy-replay-driver,symproxy-replay-performance-tests,symproxy-replay-plugin'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
