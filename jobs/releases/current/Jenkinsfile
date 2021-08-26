@@ -1,14 +1,14 @@
 node {
     stage('Release scan orchestrator') {
         def projects = [:]
-        def snyk_org = "4c961058-b36e-4510-894f-99d3f39d3498"
+        def snyk_org = "711c53b6-a85d-4a51-a34f-42552cc8572e"
         def snyk_scan = "monitor"
 
         projects['SFE-Client-App'] = {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
-                string(name: 'git_hash', value: "master),
+                string(name: 'git_hash', value: "master"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
@@ -30,7 +30,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
-                string(name: 'git_hash', value: "master"),
+                string(name: 'git_hash', value: "master),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
@@ -47,6 +47,7 @@ node {
             ],
             wait: true
         }
+
 
         parallel projects
     }

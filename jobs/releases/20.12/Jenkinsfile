@@ -8,7 +8,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
-                string(name: 'git_hash', value: "master"),
+                string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
@@ -19,7 +19,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Admin-Compliance.git"),
-                string(name: 'git_hash', value: "dev"),
+                string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
@@ -30,7 +30,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
-                string(name: 'git_hash', value: "master),
+                string(name: 'git_hash', value: "20.12"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
@@ -48,6 +48,96 @@ node {
             wait: true
         }
 
+        projects['NEXUS'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/NEXUS.git"),
+                string(name: 'git_hash', value: "20.12"),
+                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+        projects['SBE'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SBE.git"),
+                string(name: 'git_hash', value: "20.12"),
+                string(name: 'prj_type', value: "java"),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true -PSymphony,SharedResources"),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+        projects['symphony-agent'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-agent.git"),
+                string(name: 'git_hash', value: "20.12"),
+                string(name: 'prj_type', value: "java"),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: '-DskipTests=true'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+        projects['symprox'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/symprox.git"),
+                string(name: 'git_hash', value: "20.12"),
+                string(name: 'prj_type', value: "java"),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: '-DskipTests=true'),
+                string(name: 'snyk_exclude', value: 'harpo-integration-tests,harpo-replay-plugin,performance_test,re2,symproxy-re2-plugin,symproxy-replay-assistant,symproxy-replay-driver,symproxy-replay-performance-tests,symproxy-replay-plugin'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+        projects['rtc-sip-bridge'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/rtc-sip-bridge.git"),
+                string(name: 'git_hash', value: "rc-current-r20.12"),
+                string(name: 'prj_type', value: "java"),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: '-DskipTests=true'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }   
+
+        projects['rtc-media-bridge'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/rtc-media-bridge.git"),
+                string(name: 'git_hash', value: "rc-current-r20.12"),
+                string(name: 'prj_type', value: "java"),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: '-DskipTests=true'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+        projects['rtc-conference-service'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/rtc-conference-service.git"),
+                string(name: 'git_hash', value: "rc-current-r20.12"),
+                string(name: 'prj_type', value: "java"),
+                string(name: 'java_version', value: '11'),
+                string(name: 'java_params', value: '-Dskip.tests=true -Dskip.integration.tests=true'),
+                string(name: 'snyk_exclude', value: "tools"),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
 
         parallel projects
     }
