@@ -4,10 +4,34 @@ node {
         def snyk_org = "4c961058-b36e-4510-894f-99d3f39d3498"
         def snyk_scan = "monitor"
 
+	projects['SBE'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SBE.git"),
+                string(name: 'git_hash', value: "dev"),
+                string(name: 'prj_type', value: "java"),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true -PSymphony,SharedResources"),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
         projects['SFE-Client-App'] = {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+        projects['SFE-Login'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
                 string(name: 'git_hash', value: "master"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: snyk_scan)
@@ -26,16 +50,6 @@ node {
             wait: true
         }
 
-        projects['SFE-Login'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
 
         projects['Embedded-Chat'] = {
             build job: 'executor', parameters: [
