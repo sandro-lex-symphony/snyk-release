@@ -24,9 +24,22 @@ build_node() {
         nvm install $NODE_VERSION
     fi
 
-    echo "Install npm deps ..."
-    cd $(basename $GIT_REPO .git)
-    npm install
+    if [ "$YARN_VERSION" != "" ]
+    then
+        echo "Going to install yarn version $YARN_VERSION "
+	.  ~/.yvm/yvm.sh
+	yvm install $YARN_VERSION
+	yvm use $YARN_VERSION
+
+	echo "Install npm deps ..."
+	cd $(basename $GIT_REPO .git)
+	yarn install
+    else 
+
+        echo "Install npm deps ..."
+        cd $(basename $GIT_REPO .git)
+        npm install
+    fi
 
     rm ${HOME}/.npmrc
 }

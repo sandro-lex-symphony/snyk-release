@@ -10,6 +10,7 @@ properties([
      stringParam(name: 'snyk_exclude', defaultValue: 'filler', description: "exclude dirs (as oposed to --all-projects flag)"),
      stringParam(name: 'prj_type', defaultValue: 'nodejs', description: "nodejs | java"),
      stringParam(name: 'node_version', defaultValue: '10.21.0', description: "nodejs version"),
+     stringParam(name: 'yarn_version', defaultValue: '', description: "yarn version"),
      stringParam(name: 'java_version', defaultValue: '8', description: "8 | 11"),
      stringParam(name: 'java_params', defaultValue: '', description: "Additional parameters for maven build")
    ])    
@@ -62,6 +63,7 @@ node {
                 -e JAVA_VERSION='${params.java_version}' \
                 -e JAVA_PARAMS='${params.java_params}' \
                 -e NODE_VERSION='${params.node_version}' \
+                -e YARN_VERSION='${params.yarn_version}' \
                 -e PRJ_TYPE='${params.prj_type}' \
                 -e BUILD_NUMBER='${BUILD_NUMBER}' \
                 -e SNYK_EXCLUDE='${params.snyk_exclude}' \
