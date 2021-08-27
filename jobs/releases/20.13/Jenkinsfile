@@ -62,6 +62,20 @@ node {
             wait: true
         }
 
+        projects['BFF'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/BFF.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'java'),
+                string(name: 'java_version', value: '11'),
+                string(name: 'java_params', value: "-Dskip.unit.test=true"),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+
         parallel projects
     }
 }
