@@ -12,6 +12,7 @@ node {
                 string(name: 'prj_type', value: 'java'),
                 string(name: 'java_version', value: '11'),
                 string(name: 'java_params', value: "-Dskip.unit.test=true"),
+		string(name: 'snyk_exclude', value: 'api-specification,generated-test-sources,generated-sources'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
@@ -38,7 +39,7 @@ node {
                 string(name: 'prj_type', value: 'java'),
                 string(name: 'java_version', value: '8'),
                 string(name: 'java_params', value: "-DskipTests=true"),
-                string(name: 'snyk_exclude', value: 'cache-integration-tests')
+                string(name: 'snyk_exclude', value: 'cache-integration-tests'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
