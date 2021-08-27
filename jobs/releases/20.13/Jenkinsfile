@@ -76,6 +76,48 @@ node {
             wait: true
         }
 
+        projects['SymphonyLibrary'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SymphonyLibrary.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'java'),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: "-DskipTests=true"),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+	projects['SBE-Clouds'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SBE-Clouds.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'java'),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: "-DskipTests=true"),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+        projects['Caching-Lib'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/Caching-Lib.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'java'),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: "-DskipTests=true"),
+                string(name: 'snyk_exclude', value: 'cache-integration-tests')
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+
+
 
         parallel projects
     }
