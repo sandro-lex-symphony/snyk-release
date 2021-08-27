@@ -2,6 +2,15 @@
 
 set -e 
 
+replace_secrets() {
+    # replace artifactory password in npmrc file
+    sed -i s/xxx/${NPM_PASS}/g ${HOME}/.npmrc
+
+    # replace artifactory password in mvn settings file
+    sed -i "s/xxx/${MVN_PASS}/g" ${HOME}/.m2/settings.xml
+}
+
+
 build_node() {
     set -e 
     INSTALLED_NODE_VERSION=$(node --version)
@@ -14,9 +23,6 @@ build_node() {
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         nvm install $NODE_VERSION
     fi
-
-    # replace artifactory password in npmrc file
-    sed -i s/xxx/${NPM_PASS}/g ${HOME}/.npmrc
 
     echo "Install npm deps ..."
     cd $(basename $GIT_REPO .git)
@@ -38,9 +44,6 @@ build_java() {
     echo "Using Java Version:"
     java -version
 
-    # replace artifactory password in mvn settings file
-    sed -i "s/xxx/${MVN_PASS}/g" ${HOME}/.m2/settings.xml
-
     # specific usage for rtc-media-bridge
     export ARTIFACTORY_USERNAME=dev-services
     export ARTIFACTORY_PASSWORD=${MVN_PASS}
@@ -59,6 +62,8 @@ build_java() {
 }
 
 echo "XXXXXX ${BUILD_NUMBER} XXXXX"
+replace_secrets
+
 if [ "$PRJ_TYPE" = "nodejs" ]
 then
     echo "Going to build nodejs project ..."
