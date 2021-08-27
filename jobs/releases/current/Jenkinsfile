@@ -4,50 +4,18 @@ node {
         def snyk_org = "711c53b6-a85d-4a51-a34f-42552cc8572e"
         def snyk_scan = "monitor"
 
-        projects['SFE-Client-App'] = {
+        projects['BFF'] = {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/BFF.git"),
                 string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'prj_type', value: 'java'),
+                string(name: 'java_version', value: '11'),
+                string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true"),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
         }
-
-        projects['SFE-Admin-Compliance'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Admin-Compliance.git"),
-                string(name: 'git_hash', value: "dev"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
-
-        projects['SFE-Login'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
-
-        projects['Embedded-Chat'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/Embedded-Chat.git"),
-                string(name: 'git_hash', value: "dev"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
-
 
         parallel projects
     }
