@@ -116,7 +116,31 @@ node {
             wait: true
         }
 
+	projects['symphony-profile-manager'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-profile-manager.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'java'),
+                string(name: 'java_version', value: '11'),
+                string(name: 'java_params', value: "-Dmaven.test.skip=true"),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
 
+	projects['SFE-Lite'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'node_version', value: '12.18.3'),
+                string(name: 'yarn_version', value: '1.15.2'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
 
 
         parallel projects
