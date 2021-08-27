@@ -89,7 +89,7 @@ node {
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
                 string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'node'),
+                string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'node_version', value: '12.18.3'),
                 string(name: 'yarn_version', value: '1.15.2'),
                 string(name: 'snyk_scan', value: snyk_scan)
