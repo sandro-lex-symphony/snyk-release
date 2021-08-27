@@ -70,8 +70,8 @@ build_java() {
         PARAMS=$JAVA_PARAMS
     fi
 
-    echo "[COMMAND]: mvn clean install -U -B -ntp $PARAMS"
-    mvn clean install -U -B -ntp $PARAMS
+    echo "[COMMAND]: mvn clean package -U -B -ntp $PARAMS"
+    mvn clean package -U -B -ntp $PARAMS
 }
 
 echo "XXXXXX ${BUILD_NUMBER} XXXXX"
