@@ -8,7 +8,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SBE.git"),
-                string(name: 'git_hash', value: "dev"),
+                string(name: 'git_hash', value: "20.13"),
                 string(name: 'prj_type', value: "java"),
                 string(name: 'java_version', value: '8'),
                 string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true -PSymphony,SharedResources"),
@@ -21,7 +21,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
-                string(name: 'git_hash', value: "master"),
+                string(name: 'git_hash', value: "20.13"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
@@ -32,7 +32,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Login.git"),
-                string(name: 'git_hash', value: "master"),
+                string(name: 'git_hash', value: "20.13"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
@@ -43,7 +43,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Admin-Compliance.git"),
-                string(name: 'git_hash', value: "dev"),
+                string(name: 'git_hash', value: "20.13"),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
@@ -66,7 +66,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/BFF.git"),
-                string(name: 'git_hash', value: "master"),
+                string(name: 'git_hash', value: "release/21.9"),
                 string(name: 'prj_type', value: 'java'),
                 string(name: 'java_version', value: '11'),
                 string(name: 'java_params', value: "-Dskip.unit.test=true"),
@@ -133,7 +133,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
-                string(name: 'git_hash', value: "master"),
+                string(name: 'git_hash', value: "21.9   "),
                 string(name: 'prj_type', value: 'nodejs'),
                 string(name: 'node_version', value: '12.18.3'),
                 string(name: 'yarn_version', value: '1.15.2'),
