@@ -117,7 +117,7 @@ node {
                 string(name: 'git_hash', value: "master"),
                 string(name: 'prj_type', value: 'java'),
                 string(name: 'java_version', value: '8'),
-                string(name: 'java_params', value: "-Dmaven.test.skip=true"),
+                string(name: 'java_params', value: "-DskipTests=true"),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
@@ -166,6 +166,18 @@ node {
                 string(name: 'git_hash', value: "main"),
                 string(name: 'prj_type', value: 'java'),
                 string(name: 'java_version', value: '11'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+        projects['LDAP-Sync'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/LDAP-Sync.git"),
+                string(name: 'git_hash', value: "main"),
+                string(name: 'prj_type', value: 'java'),
+                string(name: 'java_version', value: '8'),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
             wait: true
