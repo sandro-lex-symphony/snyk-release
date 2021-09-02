@@ -109,6 +109,19 @@ node {
             ],
             wait: true
         }
+    
+    projects['SFE-RTC'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'node_version', value: '12.18.3'),
+                string(name: 'yarn_version', value: '1.15.2'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
 
     projects['Directory'] = {
             build job: 'executor', parameters: [
@@ -175,7 +188,7 @@ node {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
                 string(name: 'git_repo', value: "github.com/SymphonyOSF/LDAP-Sync.git"),
-                string(name: 'git_hash', value: "main"),
+                string(name: 'git_hash', value: "dev"),
                 string(name: 'prj_type', value: 'java'),
                 string(name: 'java_version', value: '8'),
                 string(name: 'snyk_scan', value: snyk_scan)
@@ -183,6 +196,17 @@ node {
             wait: true
         }
 
+    projects['SymphonyElectron'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/SymphonyElectron.git"),
+                string(name: 'git_hash', value: "main"),
+                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'node_version', value: '12.18.3'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
 
 
         parallel projects
