@@ -110,6 +110,67 @@ node {
             wait: true
         }
 
+    projects['Directory'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/Directory.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'java'),
+                string(name: 'java_version', value: '8'),
+                string(name: 'java_params', value: "-Dmaven.test.skip=true"),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+    projects['symphony-datafeed-poller'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed-poller.git"),
+                string(name: 'git_hash', value: "dev"),
+                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'node_version', value: '12.18.3'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+    projects['symphony-datafeed2.0-api'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed2.0-api.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'node_version', value: '12.18.3'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+    projects['symphony-datafeed-support-services'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed-support-services.git"),
+                string(name: 'git_hash', value: "master"),
+                string(name: 'prj_type', value: 'nodejs'),
+                string(name: 'node_version', value: '12.18.3'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
+    projects['symphony-datafeed-subscription-service'] = {
+            build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed-subscription-service.git"),
+                string(name: 'git_hash', value: "main"),
+                string(name: 'prj_type', value: 'java'),
+                string(name: 'java_version', value: '11'),
+                string(name: 'snyk_scan', value: snyk_scan)
+            ],
+            wait: true
+        }
+
 
 
         parallel projects
