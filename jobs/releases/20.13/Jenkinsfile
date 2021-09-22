@@ -62,19 +62,19 @@ node {
             wait: true
         }
 
-        projects['BFF'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/BFF.git"),
-                string(name: 'git_hash', value: "release/21.9"),
-                string(name: 'prj_type', value: 'java'),
-                string(name: 'java_version', value: '11'),
-                string(name: 'java_params', value: "-Dskip.unit.test=true"),
-                string(name: 'snyk_exclude', value: 'api-specification,generated-test-sources,generated-sources'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+        //projects['BFF'] = {
+        //    build job: 'executor', parameters: [
+        //        string(name: 'snyk_org', value: snyk_org),
+        //        string(name: 'git_repo', value: "github.com/SymphonyOSF/BFF.git"),
+        //        string(name: 'git_hash', value: "release/21.9"),
+        //        string(name: 'prj_type', value: 'java'),
+        //        string(name: 'java_version', value: '11'),
+        //        string(name: 'java_params', value: "-Dskip.unit.test=true"),
+        //        string(name: 'snyk_exclude', value: 'api-specification,generated-test-sources,generated-sources'),
+        //        string(name: 'snyk_scan', value: snyk_scan)
+        //    ],
+        //    wait: true
+        //}
 
         // projects['SymphonyLibrary'] = {
         //     build job: 'executor', parameters: [
@@ -129,18 +129,18 @@ node {
             wait: true
         }
 
-	projects['SFE-Lite'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
-                string(name: 'git_hash', value: "21.9   "),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'node_version', value: '12.18.3'),
-                string(name: 'yarn_version', value: '1.15.2'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+	// projects['SFE-Lite'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
+    //             string(name: 'git_hash', value: "21.9   "),
+    //             string(name: 'prj_type', value: 'nodejs'),
+    //             string(name: 'node_version', value: '12.18.3'),
+    //             string(name: 'yarn_version', value: '1.15.2'),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
     projects['symphony-agent'] = {
             build job: 'executor', parameters: [
