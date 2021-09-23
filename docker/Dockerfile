@@ -46,6 +46,7 @@ RUN mkdir -p /root/.m2
 COPY conf/settings.xml /root/.m2/settings.xml
 COPY conf/npmrc /root/.npmrc
 COPY conf/snyk-token /root/snyk-token
+COPY conf/webhook-id /root/webhook-id
 WORKDIR /root
 RUN mkdir /root/data
 COPY scripts/*.sh /usr/local/bin/
