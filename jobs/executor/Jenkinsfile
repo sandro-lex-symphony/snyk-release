@@ -12,6 +12,7 @@ properties([
      stringParam(name: 'node_version', defaultValue: '10.21.0', description: "nodejs version"),
      stringParam(name: 'yarn_version', defaultValue: '', description: "yarn version"),
      stringParam(name: 'java_version', defaultValue: '8', description: "8 | 11"),
+     stringParam(name: 'java_build_cmd', defaultValue: 'filler', description: "mvn clean package"),
      stringParam(name: 'java_params', defaultValue: '', description: "Additional parameters for maven build")
    ])    
  ])    
@@ -61,6 +62,7 @@ node {
                 -e GIT_HASH='${params.git_hash}' \
                 -e SNYK_SCAN='${params.snyk_scan}' \
                 -e JAVA_VERSION='${params.java_version}' \
+                -e JAVA_BUILD_CMD='${params.java_build_cmd}' \
                 -e JAVA_PARAMS='${params.java_params}' \
                 -e NODE_VERSION='${params.node_version}' \
                 -e YARN_VERSION='${params.yarn_version}' \
