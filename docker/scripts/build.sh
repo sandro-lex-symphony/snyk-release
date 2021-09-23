@@ -66,7 +66,7 @@ build_java() {
 
     if [ "$JAVA_BUILD_CMD" == "filler" ]
     then
-        JAVA_BUILD_CMD="mvn clean package -U -B -ntp"
+        JAVA_BUILD_CMD="mvn clean install -U -B -ntp"
     fi
 
     if [ "$JAVA_PARAMS" = "filler" ]

@@ -11,7 +11,6 @@ node {
                 string(name: 'git_hash', value: "20.13"),
                 string(name: 'prj_type', value: "java"),
                 string(name: 'java_version', value: '8'),
-                string(name: 'java_build_cmd', value: 'mvn clean install -U -B -ntp '),
                 string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true -PSymphony,SharedResources"),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
