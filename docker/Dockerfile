@@ -30,6 +30,9 @@ RUN cd /opt && wget https://nodejs.org/dist/v10.21.0/node-v10.21.0-linux-x64.tar
 # SNYK
 RUN npm i -g snyk 
 
+# snykctl
+COPY bin/snykctl /usr/local/bin/
+
 # python used for the Notification
 RUN pip3 install requests
 

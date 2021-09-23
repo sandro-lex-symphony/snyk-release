@@ -123,6 +123,7 @@ node {
                 string(name: 'git_hash', value: "master"),
                 string(name: 'prj_type', value: 'java'),
                 string(name: 'java_version', value: '11'),
+                string(name: 'java_build_cmd', value: "mvn clean package -U -B -ntp "),
                 string(name: 'java_params', value: "-Dmaven.test.skip=true"),
                 string(name: 'snyk_scan', value: snyk_scan)
             ],
