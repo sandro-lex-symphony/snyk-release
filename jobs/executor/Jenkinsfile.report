@@ -1,0 +1,39 @@
+@Library('SnykShared@master')                                                                                                           
+import com.symphony.security.containers.Artifactory
+
+properties([    
+   parameters([
+     stringParam(name: 'snyk_org', defaultValue: '', description: "Snyk Org Id (not name), should have a token valid")
+   ])    
+ ])    
+
+
+node {
+    stage("REPORT") {
+        echo """ \
+        ########## PARAMS ################### \n \
+        # snyk_org: ${params.snyk_org} \n \
+        #####################################"""
+
+        def snyk_image = "slex-reg-test/snyk-release:${params.snyk_org}"
+        def artifactory_url = 'artifact.symphony.com'
+
+        artfactory = new Artifactory(this)
+        artfactory.pull(snyk_image)
+
+        def secrets = ''
+        def temp = ''
+        
+        withCredentials([usernamePassword(credentialsId: 'SNYK_BASEIMAGE_TOKEN', usernameVariable: 'FILLER', passwordVariable: 'snyk_token')]) { 
+            secrets += " -e SECRET='${snyk_token}' "
+        }
+
+        sh ("""#!/bin/sh -e\n docker run --rm \
+                ${secrets} \
+                -e SNYK_ORG='${params.snyk_org}' \
+                -e BUILD_NUMBER='${BUILD_NUMBER}' \
+                ${artifactory_url}/${snyk_image} /usr/bin/report.sh""")
+    }
+}
+
+
