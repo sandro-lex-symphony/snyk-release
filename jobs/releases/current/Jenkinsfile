@@ -196,18 +196,18 @@ node {
             wait: true
         }
 
-    projects['SymphonyElectron'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SymphonyElectron.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'node_version', value: '12.18.3'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
-
+//     projects['SymphonyElectron'] = {
+//             build job: 'executor', parameters: [
+//                 string(name: 'snyk_org', value: snyk_org),
+//                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SymphonyElectron.git"),
+//                 string(name: 'git_hash', value: "master"),
+//                 string(name: 'prj_type', value: 'nodejs'),
+//                 string(name: 'node_version', value: '12.18.3'),
+//                 string(name: 'snyk_scan', value: snyk_scan)
+//             ],
+//             wait: true
+//         }
+// 
 
         parallel projects
 
