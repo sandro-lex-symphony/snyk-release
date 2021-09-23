@@ -29,10 +29,11 @@ node {
         }
 
         sh ("""#!/bin/sh -e\n docker run --rm \
+                --entrypoint='/usr/local/bin/report.sh' \
                 ${secrets} \
                 -e SNYK_ORG='${params.snyk_org}' \
                 -e BUILD_NUMBER='${BUILD_NUMBER}' \
-                ${artifactory_url}/${snyk_image} /usr/bin/report.sh""")
+                ${artifactory_url}/${snyk_image} """)
     }
 }
 
