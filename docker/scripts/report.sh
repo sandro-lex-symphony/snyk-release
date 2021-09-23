@@ -11,15 +11,15 @@ echo "group_token = $SNYK_TOKEN" >> ~/.snykctl.conf
 echo "group_id = $SNYK_ORG"  >> ~/.snykctl.conf
                                        
 # gather issues data from snyk server
-TABLE = $(snykctl issue-count $SNYK_ORG)
+TABLE=$(snykctl issue-count $SNYK_ORG)
 
 MESSAGE="<messageML>$TABLE</messageML>"
 
 # decrypt webhook if
 openssl enc -d -aes-256-cbc -md sha512 -pbkdf2 -iter 100000 -salt -in ${HOME}/webhook-id -out ${HOME}/webhook-id.txt -k $SECRET 
-WEBHOOKID = $(cat ~/webhook-id.txt)
+WEBHOOKID=$(cat ~/webhook-id.txt)
 
-URL = "https://corporate.symphony.com/integration/v1/whi/simpleWebHookIntegration/$WEBHOOKID"
+URL="https://corporate.symphony.com/integration/v1/whi/simpleWebHookIntegration/$WEBHOOKID"
 
 curl -X POST -d "payload=$MESSAGE" $URL
 
