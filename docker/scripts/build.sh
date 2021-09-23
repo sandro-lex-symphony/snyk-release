@@ -63,6 +63,12 @@ build_java() {
 
     cd $(basename $GIT_REPO .git)
     echo "Building maven prj ..."
+
+    if [ "$JAVA_BUILD_CMD" == "filler" ]
+    then
+        JAVA_BUILD_CMD="mvn clean package -U -B -ntp"
+    fi
+
     if [ "$JAVA_PARAMS" = "filler" ]
     then
         PARAMS=''
@@ -70,8 +76,8 @@ build_java() {
         PARAMS=$JAVA_PARAMS
     fi
 
-    echo "[COMMAND]: mvn clean package -U -B -ntp $PARAMS"
-    mvn clean package -U -B -ntp $PARAMS
+    echo "[COMMAND]: $JAVA_BUILD_CMD $PARAMS"
+    $JAVA_BUILD_CMD $PARAMS
 }
 
 echo "XXXXXX ${BUILD_NUMBER} XXXXX"

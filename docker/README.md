@@ -28,6 +28,7 @@ Encrypt the secret
       -e SNYK_SCAN=[test|monitor] \
       -e PRJ_TYPE=[java|nodejs] \
       -e JAVA_VERSION=[8|11] \
+      -e JAVA_BUILD_CMD=[build cmd] \
       -e JAVA_PARAMS=[params] \
       -e NODE_VERSION=[version] \
       snyk-release
@@ -47,6 +48,7 @@ Encrypt the secret
 | SNYK_SCAN    | Snyk Scan mode [test / monitor]                       | Default test | String | monitor | 
 | PRJ_TYPE     | Project Type [java / nodejs]                          | Default nodejs | String | java |
 | JAVA_VERSION | Java version [8 / 11]                                 | Default 8 | String | 11 |
+| JAVA_BUILD_CMD  | mvn build cmd                                    | Yes | String | mvn clean package |
 | JAVA_PARAMS  | Java additional parameters for mvn build            | No | String | -DskipTests=true |
 | NODE_VERSION | Nodejs version                                      | Default 10.21.0 | String | 14.16.1 |
 | SNYK_EXCLUDE | Exclude directories from snyk scan                  | No | String | tests |
