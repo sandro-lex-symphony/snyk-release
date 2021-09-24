@@ -31,170 +31,170 @@ node {
             wait: true
         }
 
-        projects['Caching-Lib'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/Caching-Lib.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'java'),
-                string(name: 'java_version', value: '8'),
-                string(name: 'java_params', value: "-DskipTests=true"),
-                string(name: 'snyk_exclude', value: 'cache-integration-tests'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+        // projects['Caching-Lib'] = {
+        //     build job: 'executor', parameters: [
+        //         string(name: 'snyk_org', value: snyk_org),
+        //         string(name: 'git_repo', value: "github.com/SymphonyOSF/Caching-Lib.git"),
+        //         string(name: 'git_hash', value: "master"),
+        //         string(name: 'prj_type', value: 'java'),
+        //         string(name: 'java_version', value: '8'),
+        //         string(name: 'java_params', value: "-DskipTests=true"),
+        //         string(name: 'snyk_exclude', value: 'cache-integration-tests'),
+        //         string(name: 'snyk_scan', value: snyk_scan)
+        //     ],
+        //     wait: true
+        // }
 
-	projects['Security-Lib'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/Security-Lib.git"),
-                string(name: 'git_hash', value: "dev"),
-                string(name: 'prj_type', value: 'java'),
-                string(name: 'java_version', value: '8'),
-                string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true"),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+	// projects['Security-Lib'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/Security-Lib.git"),
+    //             string(name: 'git_hash', value: "dev"),
+    //             string(name: 'prj_type', value: 'java'),
+    //             string(name: 'java_version', value: '8'),
+    //             string(name: 'java_params', value: "-DsymphonySkipUnitTests=true -DsymphonySkipIntegrationTests=true"),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-	projects['SBE-Clouds'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SBE-Clouds.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'java'),
-                string(name: 'java_version', value: '8'),
-                string(name: 'java_params', value: "-DskipTests=true"),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+	// projects['SBE-Clouds'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/SBE-Clouds.git"),
+    //             string(name: 'git_hash', value: "master"),
+    //             string(name: 'prj_type', value: 'java'),
+    //             string(name: 'java_version', value: '8'),
+    //             string(name: 'java_params', value: "-DskipTests=true"),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-	projects['S2-Model'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/S2-Model.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'java'),
-                string(name: 'java_version', value: '8'),
-                string(name: 'java_params', value: "-DskipTests=true"),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+	// projects['S2-Model'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/S2-Model.git"),
+    //             string(name: 'git_hash', value: "master"),
+    //             string(name: 'prj_type', value: 'java'),
+    //             string(name: 'java_version', value: '8'),
+    //             string(name: 'java_params', value: "-DskipTests=true"),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-	projects['symphony-profile-manager'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-profile-manager.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'java'),
-                string(name: 'java_version', value: '11'),
-                string(name: 'java_params', value: "-Dmaven.test.skip=true"),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+	// projects['symphony-profile-manager'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-profile-manager.git"),
+    //             string(name: 'git_hash', value: "master"),
+    //             string(name: 'prj_type', value: 'java'),
+    //             string(name: 'java_version', value: '11'),
+    //             string(name: 'java_params', value: "-Dmaven.test.skip=true"),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-	projects['SFE-Lite'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'node_version', value: '12.18.3'),
-                string(name: 'yarn_version', value: '1.15.2'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+	// projects['SFE-Lite'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
+    //             string(name: 'git_hash', value: "master"),
+    //             string(name: 'prj_type', value: 'nodejs'),
+    //             string(name: 'node_version', value: '12.18.3'),
+    //             string(name: 'yarn_version', value: '1.15.2'),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
     
-    projects['SFE-RTC'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'node_version', value: '12.18.3'),
-                string(name: 'yarn_version', value: '1.15.2'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+    // projects['SFE-RTC'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Lite.git"),
+    //             string(name: 'git_hash', value: "master"),
+    //             string(name: 'prj_type', value: 'nodejs'),
+    //             string(name: 'node_version', value: '12.18.3'),
+    //             string(name: 'yarn_version', value: '1.15.2'),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-    projects['Directory'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/Directory.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'java'),
-                string(name: 'java_version', value: '8'),
-                string(name: 'java_params', value: "-DskipTests=true"),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+    // projects['Directory'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/Directory.git"),
+    //             string(name: 'git_hash', value: "master"),
+    //             string(name: 'prj_type', value: 'java'),
+    //             string(name: 'java_version', value: '8'),
+    //             string(name: 'java_params', value: "-DskipTests=true"),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-    projects['symphony-datafeed-poller'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed-poller.git"),
-                string(name: 'git_hash', value: "dev"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'node_version', value: '12.18.3'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+    // projects['symphony-datafeed-poller'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed-poller.git"),
+    //             string(name: 'git_hash', value: "dev"),
+    //             string(name: 'prj_type', value: 'nodejs'),
+    //             string(name: 'node_version', value: '12.18.3'),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-    projects['symphony-datafeed2.0-api'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed2.0-api.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'node_version', value: '12.18.3'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+    // projects['symphony-datafeed2.0-api'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed2.0-api.git"),
+    //             string(name: 'git_hash', value: "master"),
+    //             string(name: 'prj_type', value: 'nodejs'),
+    //             string(name: 'node_version', value: '12.18.3'),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-    projects['symphony-datafeed-support-services'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed-support-services.git"),
-                string(name: 'git_hash', value: "master"),
-                string(name: 'prj_type', value: 'nodejs'),
-                string(name: 'node_version', value: '12.18.3'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+    // projects['symphony-datafeed-support-services'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed-support-services.git"),
+    //             string(name: 'git_hash', value: "master"),
+    //             string(name: 'prj_type', value: 'nodejs'),
+    //             string(name: 'node_version', value: '12.18.3'),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-    projects['symphony-datafeed-subscription-service'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed-subscription-service.git"),
-                string(name: 'git_hash', value: "main"),
-                string(name: 'prj_type', value: 'java'),
-                string(name: 'java_version', value: '11'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+    // projects['symphony-datafeed-subscription-service'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/symphony-datafeed-subscription-service.git"),
+    //             string(name: 'git_hash', value: "main"),
+    //             string(name: 'prj_type', value: 'java'),
+    //             string(name: 'java_version', value: '11'),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
-        projects['LDAP-Sync'] = {
-            build job: 'executor', parameters: [
-                string(name: 'snyk_org', value: snyk_org),
-                string(name: 'git_repo', value: "github.com/SymphonyOSF/LDAP-Sync.git"),
-                string(name: 'git_hash', value: "dev"),
-                string(name: 'prj_type', value: 'java'),
-                string(name: 'java_version', value: '8'),
-                string(name: 'snyk_scan', value: snyk_scan)
-            ],
-            wait: true
-        }
+    //     projects['LDAP-Sync'] = {
+    //         build job: 'executor', parameters: [
+    //             string(name: 'snyk_org', value: snyk_org),
+    //             string(name: 'git_repo', value: "github.com/SymphonyOSF/LDAP-Sync.git"),
+    //             string(name: 'git_hash', value: "dev"),
+    //             string(name: 'prj_type', value: 'java'),
+    //             string(name: 'java_version', value: '8'),
+    //             string(name: 'snyk_scan', value: snyk_scan)
+    //         ],
+    //         wait: true
+    //     }
 
 //     projects['SymphonyElectron'] = {
 //             build job: 'executor', parameters: [
@@ -211,5 +211,15 @@ node {
 
         parallel projects
 
+    }
+
+    stage('Reporting') {
+        def projects = [:]
+        def snyk_org = "711c53b6-a85d-4a51-a34f-42552cc8572e"
+
+        build job: 'executor', parameters: [
+                string(name: 'snyk_org', value: snyk_org),
+            ],
+            wait: true
     }
 }
