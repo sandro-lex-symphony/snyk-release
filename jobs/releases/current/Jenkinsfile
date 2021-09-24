@@ -217,7 +217,7 @@ node {
         def projects = [:]
         def snyk_org = "711c53b6-a85d-4a51-a34f-42552cc8572e"
 
-        build job: 'executor', parameters: [
+        build job: 'reporter', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
             ],
             wait: true
