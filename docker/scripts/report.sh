@@ -13,7 +13,7 @@ echo "group_id = $SNYK_ORG"  >> ~/.snykctl.conf
 # gather issues data from snyk server
 TABLE=$(snykctl issue-count $SNYK_ORG)
 
-MESSAGE="<messageML>$TABLE</messageML>"
+MESSAGE="<messageML>Snyk Scan on Org $SNYK_ORG has finished. $TABLE</messageML>"
 
 # decrypt webhook if
 openssl enc -d -aes-256-cbc -md sha512 -pbkdf2 -iter 100000 -salt -in ${HOME}/webhook-id -out ${HOME}/webhook-id.txt -k $SECRET 
