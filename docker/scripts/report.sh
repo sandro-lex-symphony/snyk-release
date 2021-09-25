@@ -7,8 +7,8 @@ openssl enc -d -aes-256-cbc -md sha512 -pbkdf2 -iter 100000 -salt -in ${HOME}/sn
 
 SNYK_TOKEN=$(cat ~/snyk-token.txt)
 echo "[DEFAULT]" > ~/.snykctl.conf
-echo "group_token = $SNYK_TOKEN" >> ~/.snykctl.conf
-echo "group_id = $SNYK_ORG"  >> ~/.snykctl.conf
+echo "token = $SNYK_TOKEN" >> ~/.snykctl.conf
+echo "id = $SNYK_ORG"  >> ~/.snykctl.conf
                                        
 # gather issues data from snyk server
 TABLE=$(snykctl issue-count $SNYK_ORG)
