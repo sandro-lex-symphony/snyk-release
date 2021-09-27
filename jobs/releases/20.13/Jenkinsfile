@@ -121,6 +121,7 @@ node {
 
     stage('Reporting') {
         def projects = [:]
+        def snyk_org = "4c961058-b36e-4510-894f-99d3f39d3498"
 
         build job: 'repoter', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
