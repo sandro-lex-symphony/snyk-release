@@ -17,17 +17,17 @@ node {
             wait: true
         }
 
-//         projects['SFE-Client-App'] = {
-//             build job: 'executor', parameters: [
-//                 string(name: 'snyk_org', value: snyk_org),
-//                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
-//                 string(name: 'git_hash', value: "20.13"),
-//                 string(name: 'prj_type', value: 'nodejs'),
-//                 string(name: 'snyk_scan', value: snyk_scan)
-//             ],
-//             wait: true
-//         }
-// 
+         projects['SFE-Client-App'] = {
+             build job: 'executor', parameters: [
+                 string(name: 'snyk_org', value: snyk_org),
+                 string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
+                 string(name: 'git_hash', value: "20.13"),
+                 string(name: 'prj_type', value: 'nodejs'),
+                 string(name: 'snyk_scan', value: snyk_scan)
+             ],
+             wait: true
+         }
+ 
         projects['SFE-Login'] = {
             build job: 'executor', parameters: [
                 string(name: 'snyk_org', value: snyk_org),
