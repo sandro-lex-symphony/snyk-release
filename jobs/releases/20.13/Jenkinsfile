@@ -23,6 +23,7 @@ node {
                  string(name: 'git_repo', value: "github.com/SymphonyOSF/SFE-Client-App.git"),
                  string(name: 'git_hash', value: "20.13"),
                  string(name: 'prj_type', value: 'nodejs'),
+                 string(name: 'node_version', value: '8.9.3'),
                  string(name: 'snyk_scan', value: snyk_scan)
              ],
              wait: true
