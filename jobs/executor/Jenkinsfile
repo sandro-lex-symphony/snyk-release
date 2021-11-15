@@ -1,4 +1,4 @@
-@Library('SnykShared@master')                                                                                                           
+@Library('SnykShared@main')                                                                                                           
 import com.symphony.security.containers.Artifactory
 
 properties([    
